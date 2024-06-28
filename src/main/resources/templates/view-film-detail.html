@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TP ENI</title>
+<link rel="stylesheet" data-th-href="@{/css/general.css}">
+<link rel="stylesheet" data-th-href="@{/css/tp-form.css}">
+<link rel="icon" data-th-href="@{/images/logoENI.png}" sizes="32x32">
+</head>
+<body>
+	<!-- Navbar -->
+	<header>
+		<h1 id="nav-title">
+			<a href="/">Filmothèque</a>
+		</h1>
+		<nav>
+			<ul>
+				<li><a href="/films">Films</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<form>
+			<h1>Détail du film</h1>
+			<ul class="flex-outer">
+				<li>
+					<label for="inputGenre">Genre : </label> 
+					<input id="inputGenre" type="text" data-th-value="${film.genre.titre}" />
+				</li>
+				<li>
+					<label for="inputYear">Année : </label> 
+					<input id="inputYear" type="text" data-th-value="${film.annee}">
+				
+				<li>
+					<label for="inputTitle">Titre : </label> 
+					<input id="inputTitle" type="text" data-th-value="${film.titre}">
+				
+				</li>
+				<li>
+					<label for="inputDirector">Réalisateur : </label>
+					<input id="inputDirector" type="text" data-th-value="${film.realisateur.prenom + ' ' + film.realisateur.nom}">
+				
+				</li>
+				<li>
+					<label for="inputDuration">Durée : </label>
+					<input id="inputDuration" type="number" data-th-value="${film.duree}"/>
+				</li>
+				<li>
+					<label for="selectActors">Acteur(s) : </label>
+					<select id="selectActors" multiple="multiple">
+						<option data-th-each="a : ${film.acteurs}" data-th-text="${a.prenom + ' ' + a.nom}"></option>
+					</select>
+					
+					
+				</li>
+				<li>
+					<label for="taSynopsis">Synopsis : </label>
+					<textarea id="taSynopsis" cols="30" rows="10" data-th-text="${film.synopsis}">
+					</textarea>
+					
+					
+				</li>
+			</ul>
+		</form>
+	</main>
+
+</body>
+</html>
